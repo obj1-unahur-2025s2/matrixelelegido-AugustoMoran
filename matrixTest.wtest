@@ -15,3 +15,43 @@ test "Vitalidad de Neo despues de un salto" {
   assert.equals(5, neo.vitalidad())
 }
 }
+describe "Testeamos a Morfeo" {
+  test "Morfeo no es el elegido" {
+    assert.notThat(morfeo.esElElegido())
+  }
+test "vitalidad inicial de Morfeo" {
+  assert.equals(8, morfeo.vitalidad())
+}  
+test "Vitalidad de morfeo despues de un salto" {
+  morfeo.saltar()
+  assert.equals(7, morfeo.vitalidad())
+}
+test "vitalidad y cansancio de morfeo despues de saltar" {
+  morfeo.saltar()
+  assert.equals(7,morfeo.vitalidad())
+  assert.that(morfeo.estaCansado())
+  morfeo.saltar()
+  assert.equals(6, morfeo.vitalidad())
+  assert.notThat(morfeo.estaCansado())
+}
+}
+describe "testeamos a trinity" {
+  test "vitalidad inicial de trinity" {
+    assert.equals(0, trinity.vitalidad())
+  }
+  test "trinity no es la elegida" {
+    assert.notThat(trinity.esElElegido())
+  }
+  test "vitalidada de trinity despues de un salto" {
+    trinity.saltar()
+    assert.equals(0, trinity.vitalidad())
+  }
+}
+describe "TEsteamos la nave" {
+  test "cantidad de pasajeros inicial en la nave" {
+    assert.equals(3, nave.cantidadDePasajeros())
+  }
+  test "pasajeros de mayor vitalidad al inicio" {
+    assert.equals(neo, nave.pasajeroConMayorVitalidad())
+  }
+}
